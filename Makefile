@@ -1,7 +1,7 @@
 
 SOURCES += main.cpp Path.cpp LayerExDraw.cpp
 
-LDLIBS += -lgdiplus
+LDLIBS += -lgdiplus -lgdi32 -lole32
 
 PROJECT_BASENAME = layerExDraw
 
