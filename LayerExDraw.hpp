@@ -2,6 +2,11 @@
 #define _layerExText_hpp_
 
 #include <windows.h>
+
+// Distinct type hack for mingw-w64
+typedef struct HDC__ * HDC_;
+#define HDC HDC_
+
 #include <gdiplus.h>
 using namespace Gdiplus;
 
