@@ -343,7 +343,7 @@ FontInfo::getSelfPathDraw(void) const
 OUTLINETEXTMETRIC *
 FontInfo::createFontMetric(void) const
 {
-  HDC dc = (HDC)::CreateCompatibleDC(NULL);
+  HDC dc = ::CreateCompatibleDC(NULL);
   if (dc == NULL)
     return NULL;
   LOGFONT font;
@@ -956,7 +956,7 @@ LayerExDraw::LayerExDraw(DispatchT obj)
 	  metaHDC(NULL), metaBuffer(NULL), metaStream(NULL), metafile(NULL), metaGraphics(NULL),
 	  updateWhenDraw(true)
 {
-	metaHDC = (HDC)::CreateCompatibleDC(NULL);
+	metaHDC = ::CreateCompatibleDC(NULL);
 }
 
 /**
@@ -1806,7 +1806,7 @@ LayerExDraw::createRecord()
 	destroyRecord();
 	if ((metaBuffer = ::GlobalAlloc(GMEM_MOVEABLE, 0))){
 		if (::CreateStreamOnHGlobal(metaBuffer, FALSE, &metaStream) == S_OK) 	{
-			metafile = new Metafile(metaStream, (HDC)metaHDC, EmfTypeEmfPlusOnly);
+			metafile = new Metafile(metaStream, metaHDC, EmfTypeEmfPlusOnly);
 			metaGraphics = new Graphics(metafile);
 			metaGraphics->SetCompositingMode(CompositingModeSourceOver);
 			metaGraphics->SetTransform(&transform);
